@@ -16,6 +16,7 @@
   <title>Portfolio</title>
 </head>
 <body>
+    <script src="script.js"></script>
   <nav>
     <div class="left">
       <a href="/">Boruch Rabin</a>
@@ -32,71 +33,62 @@
 
   <main>
     <section class="hero-section">
-      <div class="text">
-        <h2>Hi, I'm Boruch <span class="wave">👋</span></h2>
-        <p>I'm Boruch Rabin, a front-end developer based in South Africa.  I'm passionate about creating engaging and user-friendly web experiences. I enjoy bringing designs to life with clean, efficient code and have a particular interest in React and responsive design. Outside of coding, I'm a soccer enthusiast and lifelong learner.</p>
-        <div class="links">
-          <a href="#skills" class="button">
-            <i class="fa-solid fa-code"></i>
-            <span>Skills</span>
-          </a>
-          <a href="#contact" class="button">
-            <i class="fa-solid fa-envelope"></i>
-            <span>Contact</span>
-          </a>
+        <div class="text slide-in-left">  <h2>Hi, I'm Boruch <span class="wave">👋</span></h2>
+            <p>I'm Boruch Rabin, a front-end developer based in South Africa. I'm passionate about creating engaging and user-friendly web experiences. I enjoy bringing designs to life with clean, efficient code and have a particular interest in React and responsive design. Outside of coding, I'm a soccer enthusiast and lifelong learner.</p>
+            <div class="links">
+                <a href="#skills" class="button">
+                    <i class="fa-solid fa-code"></i>
+                    <span>Skills</span>
+                </a>
+                <a href="#contact" class="button">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>Contact</span>
+                </a>
+            </div>
         </div>
-      </div>
-        <img src="WhatsApp Image 2025-02-06 at 10.13.26_84a06a07.webp" alt="Boruch Rabin Headshot" class="headshot">
+        <img src="Images/WhatsApp Image 2025-02-06 at 10.13.26_84a06a07.webp" alt="Boruch Rabin Headshot" class="headshot fade-in">  </section>
+
+    <section id="skills" class="skills-section slide-in-right">  <h2>Skills</h2>
+        <div class="text">
+            <p>My front-end development skillset is built on a strong foundation of HTML, CSS, and JavaScript, along with experience using jQuery for DOM manipulation. I'm also proficient in C#, expanding my capabilities to back-end development and.NET environments.</p>
+        </div>
+
+        <div class="skills-grid">
+            <div class="skill-cell fade-in">  <img src="Images/html-logo.webp" alt="HTML logo">
+                <span>HTML</span>
+            </div>
+            <div class="skill-cell fade-in">  <img src="Images/css-logo.webp" alt="CSS logo">
+                <span>CSS</span>
+            </div>
+            <div class="skill-cell fade-in">  <img src="Images/javascript-logo.webp" alt="JavaScript logo">
+                <span>JavaScript</span>
+            </div>
+            <div class="skill-cell fade-in">  <img src="Images/jquery-logo.webp" alt="jQuery logo">
+                <span>jQuery</span>
+            </div>
+            <div class="skill-cell fade-in">  <img src="Images/c-sharp-c.webp" alt="C# logo">
+                <span>C#</span>
+            </div>
+        </div>
     </section>
 
-    <section id="skills" class="skills-section">
-      <h2>Skills</h2>
-      <div class="text">
-        <p>My front-end development skillset is built on a strong foundation of HTML, CSS, and JavaScript, along with experience using jQuery for DOM manipulation.  I'm also proficient in C#, expanding my capabilities to back-end development and .NET environments.</p>
-      </div>
+    <section id="contact" class="contact-section slide-in-left">  <h2>Contact</h2>
+        <div class="contact-group">
+            <form id="contactForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
 
-      <div class="skills-grid">
-        <div class="skill-cell">
-          <img src="html-logo.webp" alt="HTML logo">
-          <span>HTML</span>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+
+                <button type="submit" class="button">Send Message</button>
+            </form>
         </div>
-        <div class="skill-cell">
-          <img src="css-logo.webp" alt="CSS logo">
-          <span>CSS</span>
-        </div>
-        <div class="skill-cell">
-          <img src="javascript-logo.webp" alt="JavaScript logo">
-          <span>JavaScript</span>
-        </div>
-        <div class="skill-cell">
-          <img src="jquery-logo.webp" alt="jQuery logo">
-          <span>jQuery</span>
-        </div>
-        <div class="skill-cell">
-          <img src="c-sharp-c.webp" alt="C# logo">
-          <span>C#</span>
-        </div>
-      </div>
     </section>
-
-    <section id="contact" class="contact-section">
-      <h2>Contact</h2>
-      <div class="contact-group">
-        <form id="contactForm">
-          <label for="name">Name:</label>
-          <input type="text" id="name" name="name" required>
-
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" required>
-
-          <label for="message">Message:</label>
-          <textarea id="message" name="message" rows="5" required></textarea>
-
-          <button type="submit" class="button">Send Message</button>
-        </form>
-      </div>
-    </section>
-  </main>
+</main>
   <script>
     document.getElementById('contactForm').addEventListener('submit', function(event) {
         event.preventDefault(); // Prevent the default form submission
