@@ -7,7 +7,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -16,13 +16,13 @@
   <title>Portfolio</title>
 </head>
 <body>
-  <!-- NAVBAR -->
   <nav>
     <div class="left">
       <a href="/">Boruch Rabin</a>
     </div>
-
-      
+      <div class="right">
+          <button id="darkModeToggle" aria-label="Toggle Dark Mode">
+                <i class="fas fa-moon"></i> <span id="toggle-text">Dark Mode</span>  </button>
       <a href="mailto:brutch123@gmail.com">
         <i class="fa-solid fa-envelope"></i>
         <span>Email</span>
@@ -31,84 +31,68 @@
   </nav>
 
   <main>
-    <!-- SECTION 1: Hero -->
     <section class="hero-section">
       <div class="text">
-        <h2>Hi, I'm Boruch 👋</h2>
-        <p>Hi, I'm Boruch Rabin, a South African front-end developer with a focus on crafting intuitive and visually appealing user interfaces. I love translating designs and ideas into responsive, interactive websites.  When I'm not coding, you can find me playing soccer or exploring new technologies.
+        <h2>Hi, I'm Boruch <span class="wave">👋</span></h2>
+        <p>I'm Boruch Rabin, a front-end developer based in South Africa.  I'm passionate about creating engaging and user-friendly web experiences. I enjoy bringing designs to life with clean, efficient code and have a particular interest in React and responsive design. Outside of coding, I'm a soccer enthusiast and lifelong learner.</p>
         <div class="links">
-          <a href="#skills">
+          <a href="#skills" class="button">
             <i class="fa-solid fa-code"></i>
             <span>Skills</span>
           </a>
-          
-          <a href="#contact">
+          <a href="#contact" class="button">
             <i class="fa-solid fa-envelope"></i>
             <span>Contact</span>
           </a>
         </div>
       </div>
-
-      <div class="headshot">
-        <img src="WhatsApp Image 2025-02-06 at 10.13.26_84a06a07.webp" alt="john doe headshot">
-      </div>
+        <img src="WhatsApp Image 2025-02-06 at 10.13.26_84a06a07.webp" alt="Boruch Rabin Headshot" class="headshot">
     </section>
 
-    <!-- SECTION 2: Skills -->
     <section id="skills" class="skills-section">
       <h2>Skills</h2>
       <div class="text">
-        My front-end development skillset is built on a strong foundation of HTML, CSS, and JavaScript, along with experience using jQuery for DOM manipulation.  I'm also proficient in C#, expanding my capabilities to back-end development and .NET environments.
+        <p>My front-end development skillset is built on a strong foundation of HTML, CSS, and JavaScript, along with experience using jQuery for DOM manipulation.  I'm also proficient in C#, expanding my capabilities to back-end development and .NET environments.</p>
       </div>
 
-      <div class="cells">
-        <div class="cell">
-          <img src="html-logo.webp" alt="html logo">
+      <div class="skills-grid">
+        <div class="skill-cell">
+          <img src="html-logo.webp" alt="HTML logo">
           <span>HTML</span>
         </div>
-        
-        <div class="cell">
-          <img src="css-logo.webp" alt="css logo">
+        <div class="skill-cell">
+          <img src="css-logo.webp" alt="CSS logo">
           <span>CSS</span>
         </div>
-        
-        <div class="cell">
-          <img src="javascript-logo.webp" alt="javascript logo">
+        <div class="skill-cell">
+          <img src="javascript-logo.webp" alt="JavaScript logo">
           <span>JavaScript</span>
         </div>
-        
-        <div class="cell">
-          <img src="jquery-logo.webp" alt="node logo">
-          <span>Jquery</span>
+        <div class="skill-cell">
+          <img src="jquery-logo.webp" alt="jQuery logo">
+          <span>jQuery</span>
         </div>
-        
-        <div class="cell">
-          <img src="c-sharp-c.webp" alt="react logo">
+        <div class="skill-cell">
+          <img src="c-sharp-c.webp" alt="C# logo">
           <span>C#</span>
         </div>
       </div>
     </section>
 
-   
-
-    <!-- SECTION 3: Contact -->
     <section id="contact" class="contact-section">
       <h2>Contact</h2>
+      <div class="contact-group">
+        <form id="contactForm">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required>
 
-      <div class="group">
-        
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
 
-        <form>
-          <label for="name">Name</label>
-          <input type="text" id="name">
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
 
-          <label for="email">Email</label>
-          <input type="email" id="email">
-
-          <label for="message">Message</label>
-          <textarea id="message" cols="30" rows="10"></textarea>
-
-          <button type="submit">Send Message</button>
+          <button type="submit" class="button">Send Message</button>
         </form>
       </div>
     </section>
@@ -117,14 +101,13 @@
     document.getElementById('contactForm').addEventListener('submit', function(event) {
         event.preventDefault(); // Prevent the default form submission
 
-        // Basic client-side validation (optional, but recommended)
         const name = document.getElementById('name').value;
         const email = document.getElementById('email').value;
         const message = document.getElementById('message').value;
 
         if (!name || !email || !message) {
             alert('Please fill in all fields.');
-            return; // Stop if validation fails
+            return;
         }
         if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
           alert("Invalid Email Format");
@@ -132,12 +115,42 @@
           return;
         }
 
-        // Simulate sending the message (replace with actual sending logic if needed)
         alert('Message sent successfully!'); // Show a success message
-
-        // Reset the form
         this.reset();
     });
-</script>
+
+     // Dark Mode Toggle
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const body = document.body;
+    const toggleText = document.getElementById('toggle-text');
+    //Check for saved preference
+    const currentTheme = localStorage.getItem('theme');
+    if(currentTheme){
+        body.classList.add(currentTheme);
+        updateToggleButton();
+    }
+
+
+    darkModeToggle.addEventListener('click', function() {
+        body.classList.toggle('dark-mode');
+        updateToggleButton();
+
+        //Save the current theme
+        if(body.classList.contains('dark-mode')){
+            localStorage.setItem('theme', 'dark-mode');
+        }
+        else{
+            localStorage.setItem('theme', '');
+        }
+    });
+
+    function updateToggleButton() {
+    if (body.classList.contains('dark-mode')) {
+        darkModeToggle.innerHTML = '<i class="fas fa-sun"></i> Light Mode';
+    } else {
+        darkModeToggle.innerHTML = '<i class="fas fa-moon"></i> Dark Mode';
+    }
+}
+  </script>
 </body>
 </html>
