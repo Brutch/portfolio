@@ -1,7 +1,33 @@
 :root {
-    --text-color: #1a1c20;
-    --link-color: #4a76ee;
-    --background-color: #eeeff1;
+    /* Light Mode Colors */
+    --text-color: #333;
+    --link-color: #007bff;
+    --background-color: #f8f9fa;
+    --accent-color: #e67e22;
+    --button-bg-color: #3498db;
+    --button-hover-bg-color: #2980b9;
+    --border-color: #ddd;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --nav-bg-color: #fff;
+    --section-bg-color: #fff;
+    --skill-cell-bg: #f0f0f0;
+    --input-text-color: #333;
+    --input-bg-color: #f5f5f5;
+  
+    /* Dark Mode Colors */
+    --dark-text-color: #eee;
+    --dark-link-color: #90caf9;
+    --dark-background-color: #121212;
+    --dark-accent-color: #ff9800;
+    --dark-button-bg-color: #2196f3;
+    --dark-button-hover-bg-color: #1976d2;
+    --dark-border-color: #444;
+    --dark-shadow-color: rgba(255, 255, 255, 0.1);
+    --dark-nav-bg-color: #1e1e1e;
+    --dark-section-bg-color: #212121;
+    --dark-skill-cell-bg: #333;
+      --dark-input-text-color: #eee;
+    --dark-input-bg-color: #424242;
   }
   
   * {
@@ -20,21 +46,30 @@
     background-color: var(--background-color);
     max-width: 1400px;
     margin: 0 auto;
+    line-height: 1.6;
+      transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
   }
   
   a {
     color: var(--link-color);
     text-decoration: none;
+    transition: color 0.2s ease;
   }
   
-  /* NAVBAR */
+  a:hover {
+      color: #0056b3;
+  }
+  
+  /* Navbar */
   nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-  
     padding: 0 50px;
     height: 80px;
+    background-color: var(--nav-bg-color);
+    box-shadow: 0 2px 5px var(--shadow-color);
+     transition: background-color 0.3s ease, box-shadow 0.3s ease;
   }
   
   nav .left a {
@@ -49,25 +84,47 @@
   }
   
   nav .right a:last-child {
-    color: var(--background-color);
-    background-color: var(--text-color);
-    padding: 5px 15px;
-    border-radius: 5px;
+      color: var(--nav-bg-color);
+      background-color: var(--text-color);
+      padding: 5px 15px;
+      border-radius: 5px;
+  }
+  #darkModeToggle {
+      background-color: var(--button-bg-color);
+      color: var(--button-text-color);
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      margin-right: 15px; /* Add some space */
+      transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  #darkModeToggle:hover {
+      background-color: var(--button-hover-bg-color);
+      transform: scale(1.05);
+  }
+  nav .right a:last-child:hover{
+    filter: brightness(1.2);
   }
   
   nav .right a span {
     margin-left: 5px;
   }
   
-  /* SECTION 1: Hero */
+  /* Hero Section */
   .hero-section {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 50px;
-    margin: 50px 0;
-    margin-bottom: 100px;
+    padding: 40px 50px;
+    margin: 50px 0 100px;
     gap: 40px;
+    background-color: var(--section-bg-color);
+    border-radius: 15px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
   }
   
   .hero-section .text {
@@ -76,227 +133,317 @@
   
   .hero-section .text h2 {
     font-size: 45px;
+    margin-bottom: 0.5em;
+    color: var(--accent-color);
+  }
+  
+  .hero-section .text h2 .wave {
+    animation-name: wave-animation;
+    animation-duration: 2.5s;
+    animation-iteration-count: infinite;
+    transform-origin: 70% 70%;
+    display: inline-block;
+  }
+  
+  @keyframes wave-animation {
+      0% { transform: rotate( 0.0deg) }
+     10% { transform: rotate(14.0deg) }
+     20% { transform: rotate(-8.0deg) }
+     30% { transform: rotate(14.0deg) }
+     40% { transform: rotate(-4.0deg) }
+     50% { transform: rotate(10.0deg) }
+     60% { transform: rotate( 0.0deg) }
+    100% { transform: rotate( 0.0deg) }
   }
   
   .hero-section .text .links {
     margin-top: 25px;
   }
   
-  .hero-section .text .links a {
+  .button {
     display: inline-block;
-    padding: 5px 10px;
-    border: 2px solid var(--link-color);
+    padding: 10px 20px;
+    border: 2px solid var(--button-bg-color);
     border-radius: 5px;
+    background-color: var(--button-bg-color);
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease, border-color 0.3s ease; /* Added border-color */
     margin-right: 10px;
     margin-bottom: 10px;
-    transition: .1s;
   }
   
-  .hero-section .text .links a:hover {
-    color: var(--text-color);
-    border: 2px solid var(--text-color);
+  .button:hover {
+    background-color: var(--button-hover-bg-color);
+    transform: scale(1.05);
+    color: white;
+    border-color: var(--button-hover-bg-color); /* Change border on hover */
   }
   
-    .headshot-container {
-        flex: 2;
+  .button i {
+    margin-right: 5px;
+  }
+  
+   .hero-section{
         display: flex;
-        justify-content: flex-end; /* Align to the right */
-        align-items: center;
-        /* Remove max-width from here */
-    }
-
-    .headshot {
-       width: 300px; /* Set a fixed size for the square container */
-       height: 300px;
-       border-radius: 50%;  /* Makes it circular */
-       overflow: hidden; /* Clips the image to the container */
-    }
-
-.headshot img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /*  Crucially important for cropping */
-    object-position: center; /* Center the image within the circle */
-}
-
+      justify-content: space-between;
+      align-items: center;
+      }
+      .headshot {
+          width: 300px;  /* Keep the fixed WIDTH, or use a percentage */
+          height: auto;  /* Let the image's aspect ratio determine height */
+          border-radius: 15px; /*  RECTANGLE:  Change this!  0 for sharp corners, small value for rounded */
+          overflow: hidden;
+          border: 3px solid var(--accent-color);
+          box-shadow: 0 2px 5px var(--shadow-color);
+      }
   
-  /* SECTION 2: Skills */
+      .headshot img {
+          width: 100%;
+          height: auto; /*This is better*/
+          object-fit: cover;
+          object-position: center;
+      }
+  
+  /* Skills Section */
   .skills-section {
-    padding: 0 50px;
+    padding: 40px 50px;
     margin-bottom: 100px;
+    background-color: var(--background-color);
+    transition: background-color 0.3s ease;
   }
   
   .skills-section h2 {
     text-align: center;
     font-size: 35px;
+    margin-bottom: 1em;
+     color: var(--accent-color);
   }
   
   .skills-section .text {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
   }
   
-  .skills-section .cells {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    justify-items: center;
   }
   
-  .skills-section .cells .cell {
+  .skill-cell {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    gap: 10px;
-  
-    width: 200px;
-    padding: 10px 20px;
-    margin: 10px;
-    border: 1.5px solid #d3d3d3;
-    border-radius: 5px;
+    text-align: center;
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--skill-cell-bg);
+    box-shadow: 0 2px 4px var(--shadow-color);
+    width: 100%;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease; /* Added bg color */
   }
   
-  .skills-section .cells .cell img {
-    width: 30px;
-    height: 30px;
-    object-fit: contain;
-    border-radius: 2px;
+  .skill-cell:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
   
-  .skills-section .cells .cell span {
-    font-size: 18px;
+  .skill-cell img {
+      max-width: 30px;
+      max-height: 30px;
+      object-fit: contain;
+      margin-bottom: 10px;
   }
   
- 
-  /* SECTION 3: Contact */
+  
+  .skill-cell span {
+    font-size: 16px;
+    font-weight: 600;
+  }
+  
+  
+  /* Contact Section */
   .contact-section {
-    padding: 0 50px;
-    margin-bottom: 100px;
+      padding: 40px 50px;
+      margin-bottom: 100px;
+      background-color: var(--section-bg-color);
+      border-radius: 15px;
+      box-shadow: 0 4px 8px var(--shadow-color);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
   }
   
   .contact-section h2 {
-    font-size: 35px;
+      font-size: 35px;
+      margin-bottom: 1em;
+      text-align: center;
+      color: var(--accent-color);
   }
   
-  .contact-section .group {
-    display: flex;
-    gap: 50px;
+  .contact-group {
+      display: block;
   }
   
-  .contact-section .group .text {
-    flex: 3;
-    margin-top: 20px;
+  .contact-section form {
+      display: flex;
+      flex-direction: column;
+      max-width: 500px;
+      margin: 0 auto;
   }
   
-  .contact-section .group form {
-    flex: 3;
-    display: flex;
-    flex-direction: column;
+  .contact-section form input,
+  .contact-section form textarea {
+      font-family: 'Poppins', sans-serif;
+      border: 2px solid var(--link-color);
+      padding: 10px;
+      margin-bottom: 15px;
+      outline: none;
+      resize: none;
+      border-radius: 5px;
+      background: linear-gradient(to bottom, #f5f5f5, #eee);
+      color: var(--input-text-color);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Added transitions */
   }
   
-  .contact-section .group form input,
-  .contact-section .group form textarea {
-    font-family: 'Poppins', sans-serif;
-    border: 2px solid var(--link-color);
-    background-color: transparent;
-    padding: 10px;
-    margin-bottom: 15px;
-    outline: none;
-    resize: none;
+  .contact-section form input:focus,
+  .contact-section form textarea:focus {
+      border-color: var(--accent-color);
+      box-shadow: 0 0 5px rgba(74, 118, 238, 0.5);
   }
   
-  .contact-section .group form button {
-    font-size: 16px;
-    font-family: 'Poppins', sans-serif;
-    color: #fff;
-    background-color: var(--link-color);
-    border: none;
-    height: 50px;
-    cursor: pointer;
-    transition: .1s;
+  .contact-section form button {
+       padding: 12px 20px;
+      border: none;
+      border-radius: 5px;
+      background-color: var(--button-bg-color);
+      color: white;
+      text-decoration: none;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      margin-right: 10px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 1rem;
   }
   
-  .contact-section .group form button:hover {
-    filter: brightness(.9);
+  .contact-section form button:hover {
+      background-color: var(--button-hover-bg-color);
+      transform: scale(1.03);
   }
   
+  /* Media Queries */
   @media (max-width: 850px) {
-    /* SECTION 1: Hero */
     .hero-section .text h2 {
       font-size: 35px;
+    }
+    .hero-section{
+        padding: 40px 25px;
+    }
+    .skills-section{
+        padding: 40px 25px;
+    }
+      .contact-section{
+        padding: 40px 25px;
     }
   }
   
   @media (max-width: 740px) {
-    /* SECTION 1: Hero */
     .hero-section {
       flex-direction: column-reverse;
-       align-items: center; /* Center items horizontally */
+      align-items: center;
+      margin: 20px 0 50px;
+      padding: 20px;
     }
-
-      .headshot-container {
-         justify-content: center; /* Center the image horizontally */
-         margin-bottom: 20px; /* Space between image and text */
-    }
-
+  
+    /* .headshot-container {
+      justify-content: center;
+      margin-bottom: 20px;
+      width: 100%;
+      max-width: 400px;
+    } */
+      .headshot {
+          width: 250px;  /* Adjust as needed for smaller screens */
+          height: auto;
+          border-radius: 15px; /* Keep consistent with the above */
+      }
+  
     .hero-section .headshot img {
-      width: 300px;
-      /* Let the image determine its own height */
-      max-width: 100%; /* But don't let it exceed container width */
-    }
+          width: 250px;
+          max-width: 100%;
+          height: auto;
+      }
   
-   
-  
-    /* SECTION 3: Contact */
-    .contact-section .group {
-      flex-direction: column;
-    }
+      .contact-section .group {
+        flex-direction: column;
+      }
   }
   
   @media (max-width: 600px) {
-    /* NAVBAR */
     nav {
       padding: 0 20px;
+      flex-direction: column;
+      height: auto;
     }
+      nav .right{
+          margin-top: 1rem;
+      }
   
     nav .right a {
-      font-size: 22px;
+      font-size: 16px;
+       margin: 5px 10px;
     }
   
     nav .right a:last-child {
-      color: var(--text-color);
-      background-color: transparent;
-      padding: 0;
+        background-color: var(--text-color);
     }
+      nav .right a:last-child span{
+          display: inline;
+      }
   
-    nav .right a span {
-      display: none;
-    }
-  
-    /* SECTION 1: Hero */
     .hero-section {
-      padding: 0 20px;
+      padding: 20px;
     }
   
     .hero-section .text h2 {
       font-size: 30px;
     }
   
-    /* SECTION 2: Skills */
     .skills-section {
-      padding: 0 20px;
+      padding: 20px;
     }
   
     .skills-section .cells .cell span {
-      font-size: 16px;
+      font-size: 14px;
     }
   
-    /* SECTION 3: Testimony */
-    .testimony-section {
-      padding: 0 20px;
-    }
-  
-    /* SECTION 4: Contact */
     .contact-section {
-      padding: 0 20px;
+      padding: 20px;
     }
+      .headshot{
+          width: 100%; /* Use full width */
+          max-width: 300px; /* But don't get too big*/
+          /*padding-bottom: 100%;*/
+          height: auto;
+          border-radius: 15px;
+      }
+  }
+  
+  /* Dark Mode Styles */
+  body.dark-mode {
+    --text-color: var(--dark-text-color);
+    --link-color: var(--dark-link-color);
+    --background-color: var(--dark-background-color);
+    --accent-color: var(--dark-accent-color);
+    --button-bg-color: var(--dark-button-bg-color);
+    --button-hover-bg-color: var(--dark-button-hover-bg-color);
+    --border-color: var(--dark-border-color);
+    --shadow-color: var(--dark-shadow-color);
+    --nav-bg-color: var(--dark-nav-bg-color);
+    --section-bg-color: var(--dark-section-bg-color);
+    --skill-cell-bg: var(--dark-skill-cell-bg);
+     --input-text-color: var(--dark-input-text-color);
+    --input-bg-color: var(--dark-input-bg-color);
+  
   }
